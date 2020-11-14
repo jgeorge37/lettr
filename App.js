@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import SwipeScreen from './swipe';
+import SwipeScreen from './components/swipe';
 
 function ProfileScreen({ navigation }) {
   return (
