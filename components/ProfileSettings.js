@@ -52,7 +52,6 @@ export default function ProfileSettings () {
                 <TextInput placeholder="Price Range: Ex 500-1000" />
                 <TextInput placeholder="Age Preference: Ex 20-25" />
                 <TextInput placeholder="Gender Preference: Ex Female/NA" />
-                <TextInput placeholder="Gender Preference: Ex Female/NA" />
                 {/* <DateInput /> */}
 
 
