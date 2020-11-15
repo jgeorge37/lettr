@@ -6,7 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import SwipeScreen from './components/swipe';
-import SignInScreen from './components/signin'
+import SignInScreen from './components/signin';
+import SignUpScreen from './components/signup';
 import GlobalState from './components/globalstate';
 import SignInContext from './components/context';
 
@@ -24,15 +25,6 @@ function MessageScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Message Screen</Text>
-    </View>
-  );
-}
-
-//temp for compile
-function SignUpScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Sign Up Screen</Text>
     </View>
   );
 }

@@ -45,7 +45,7 @@ class SignUpScreen extends Component {
         <TouchableOpacity
           style={styles.loginBtn}
           onPress={() => {this.submit(); navigation.navigate('SignIn')}}>
-          <Text style={styles.loginText}>Sign Up</Text>
+          <Text style={styles.loginText}>SIGN UP</Text>
         </TouchableOpacity>
       </ScrollView>
     )
