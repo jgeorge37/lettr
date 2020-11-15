@@ -4,9 +4,14 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import SwipeScreen from './components/swipe';
 import ProfileSettings from './components/ProfileSettings';
+import SignInScreen from './components/signin'
+import GlobalState from './components/globalstate';
+import SignInContext from './components/context';
 
+//temp for compile
 function ProfileScreen({ navigation }) {
   return (
     // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -16,6 +21,7 @@ function ProfileScreen({ navigation }) {
   );
 }
 
+//temp for compile
 function MessageScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -24,35 +30,58 @@ function MessageScreen({ navigation }) {
   );
 }
 
+//temp for compile
+function SignUpScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Sign Up Screen</Text>
+    </View>
+  );
+}
+
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-          if (route.name === 'Profile') {
-            iconName = 'ios-person';
-          } else if (route.name === 'Swipe') {
-            iconName = 'ios-home';
-          } else if (route.name === 'Message') {
-            iconName = 'ios-chatbubbles';
+    <GlobalState>
+      <SignInContext.Consumer>
+        {({signedin, togglesignin}) => (<NavigationContainer>
+          {signedin ? ( //signed in, go to main app
+            <Tab.Navigator
+              screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused, color, size }) => {
+                  let iconName;
+                  if (route.name === 'Profile') {
+                    iconName = 'ios-person';
+                  } else if (route.name === 'Swipe') {
+                    iconName = 'ios-home';
+                  } else if (route.name === 'Message') {
+                    iconName = 'ios-chatbubbles';
+                  }
+                  return <Ionicons name={iconName} size={size} color={color} />;
+                },
+              })}
+              tabBarOptions={{
+                activeTintColor: 'tomato',
+                inactiveTintColor: 'gray',
+              }}
+              >
+                <Tab.Screen name="Profile" component={ProfileScreen} />
+                <Tab.Screen name="Swipe" component={SwipeScreen} />
+                <Tab.Screen name="Message" component={MessageScreen} />
+              </Tab.Navigator>
+            ) : ( //not signed in, needs to sign in or sign up
+              <Stack.Navigator>
+                <Stack.Screen name="SignIn" component={SignInScreen} />
+                <Stack.Screen name="SignUp" component={SignUpScreen} />
+              </Stack.Navigator>
+            )
           }
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
-      }}
-      >
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-        <Tab.Screen name="Swipe" component={SwipeScreen} />
-        <Tab.Screen name="Message" component={MessageScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+          </NavigationContainer>
+        )}
+      </SignInContext.Consumer>
+    </GlobalState>
   );
 }
 
