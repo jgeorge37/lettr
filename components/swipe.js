@@ -1,7 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import { Text, View, Dimensions, Image, Animated, PanResponder } from 'react-native';
+import { Text, View, Dimensions, Animated, PanResponder } from 'react-native';
 import ProfileCard from '../components/profileCard'
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
