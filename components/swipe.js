@@ -1,8 +1,8 @@
 'use strict';
 
 import React, {Component} from 'react';
-import { Text, View, Dimensions, Animated, PanResponder } from 'react-native';
-import ProfileCard from '../components/profileCard'
+import { Text, View, Dimensions, Image, Animated, PanResponder } from 'react-native';
+import ListingCard from '../components/listingCard'
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -25,7 +25,12 @@ class SwipeScreen extends Component {
         content: {
           pet_friendly: 'required',
           budget: '$420-$420'
-        }
+        },
+        pictures: [
+          'https://media.architecturaldigest.com/photos/5e669f51664e8c00083cbcec/master/w_1600%2Cc_limit/AD0420_JOHNSON_6.jpg',
+          'https://media.architecturaldigest.com/photos/5e669f4a3ba7b50008368c6f/master/w_4350,h_3263,c_limit/AD0420_JOHNSON_1.jpg',
+          'https://www.fancypantshomes.com/wp-content/uploads/2020/03/dakota-johnson-home-office.jpg'
+        ]
       }
     ]
     this.state = {
@@ -120,7 +125,7 @@ class SwipeScreen extends Component {
           <Text style={{ borderWidth: 1, borderColor: 'red', color: 'red', fontSize: 32, fontWeight: '800', padding: 10 }}>NAH</Text>
         </Animated.View>
 
-        <ProfileCard content={item.content} about={item.about} />
+        <ListingCard content={item.content} about={item.about} pictures={item.pictures}/>
 
       </Animated.View>
     )
@@ -144,7 +149,7 @@ class SwipeScreen extends Component {
 
         </Animated.View>
 
-        <ProfileCard content={item.content} about={item.about} />
+        <ListingCard content={item.content} about={item.about} pictures={item.pictures}/>
 
       </Animated.View>
     )
@@ -167,13 +172,7 @@ class SwipeScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <View style={{ height: 60 }} />
-        <View style={{ flex: 1 }}>
-          {this.renderUsers()}
-        </View>
-        <View style={{ height: 60 }} />
-      </View>
+        this.renderUsers()
     );
   }
 }
