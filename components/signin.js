@@ -21,7 +21,7 @@ class SignInScreen extends Component {
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.logo}>Lettr</Text>
+        <Text style={styles.logo}>Letr</Text>
         <View style={styles.inputView} >
           <TextInput
             style={styles.inputText}
