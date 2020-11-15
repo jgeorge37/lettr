@@ -1,13 +1,8 @@
 'use strict';
 
 import React, {Component} from 'react';
-<<<<<<< HEAD
 import { Text, View, Dimensions, Image, Animated, PanResponder } from 'react-native';
 import ListingCard from '../components/listingCard'
-=======
-import { Text, View, Dimensions, Animated, PanResponder } from 'react-native';
-import ProfileCard from '../components/profileCard'
->>>>>>> 705469873bde1049583fd2d09d3ee0fe7f474e55
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
