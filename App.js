@@ -5,34 +5,46 @@ import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import SwipeScreen from './components/swipe';
 import SignInScreen from './components/signin';
 import SignUpScreen from './components/signup';
 import ProfileSettings from './components/ProfileSettings';
+import Messaging from './components/messaging'
 import GlobalState from './components/globalstate';
 import SignInContext from './components/context';
 
-//temp for compile
-function ProfileScreen({ navigation }) {
-  return (
-    // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    //   <Text>Profile Screen</Text>
-      <ProfileSettings/>
-    // </View>
-  );
-}
-
-//temp for compile
-function MessageScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Message Screen</Text>
-    </View>
-  );
-}
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+const matches = ['The dawg', 'The doge'];
+
+function ProfileScreen({ navigation }) {
+  return (
+      <ProfileSettings/>
+  );
+}
+
+function MessageHomeScreen({ navigation }) {
+  return (
+    <View style={{flex:1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Message a match!</Text>
+    </View>
+  )
+}
+
+function MessageScreen({ navigation }) {
+  return (
+    <NavigationContainer independent={true}>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={MessageHomeScreen} />
+        {matches.map((match, index) =>
+          <Drawer.Screen name={match} component={Messaging} />
+        )}
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default function App() {
   return (
