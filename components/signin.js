@@ -1,7 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import SignInContext from '../components/context';
 
@@ -20,7 +20,7 @@ class SignInScreen extends Component {
     const { navigation } = this.props;
 
     return (
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.logo}>Lettr</Text>
         <View style={styles.inputView} >
           <TextInput
@@ -42,7 +42,7 @@ class SignInScreen extends Component {
         </TouchableOpacity>
         <SignInContext.Consumer>
           {({signedin, togglesignin}) => (<TouchableOpacity
-            onPress={togglesignin}
+            onPress={() => {this.setState({password:":)"}); togglesignin();}}
             style={styles.loginBtn}>
             <Text style={styles.loginText}>SIGN IN</Text>
           </TouchableOpacity>)}
@@ -51,8 +51,7 @@ class SignInScreen extends Component {
           onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.loginText}>Sign Up</Text>
         </TouchableOpacity>
-
-      </View>
+      </ScrollView>
     )
   }
 }

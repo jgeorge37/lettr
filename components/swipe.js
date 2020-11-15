@@ -14,7 +14,8 @@ class SwipeScreen extends Component {
 
     this.position = new Animated.ValueXY()
     this.users = [
-      { about: {
+      { id: 1,
+        about: {
           pfp: 'https://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg',
           fname: 'doge',
           gender: 'male',
@@ -81,7 +82,8 @@ class SwipeScreen extends Component {
 
         if (gestureState.dx > 120) { //swiped right
           Animated.spring(this.position, {
-            toValue: { x: SCREEN_WIDTH + 100, y: gestureState.dy }
+            toValue: { x: SCREEN_WIDTH + 100, y: gestureState.dy },
+            useNativeDriver: true
           }).start(() => {
             this.setState({ currentIndex: this.state.currentIndex + 1 }, () => {
               this.position.setValue({ x: 0, y: 0 })
@@ -90,7 +92,8 @@ class SwipeScreen extends Component {
         }
         else if (gestureState.dx < -120) { //swiped left
           Animated.spring(this.position, {
-            toValue: { x: -SCREEN_WIDTH - 100, y: gestureState.dy }
+            toValue: { x: -SCREEN_WIDTH - 100, y: gestureState.dy },
+            useNativeDriver: true
           }).start(() => {
             this.setState({ currentIndex: this.state.currentIndex + 1 }, () => {
               this.position.setValue({ x: 0, y: 0 })
@@ -100,7 +103,8 @@ class SwipeScreen extends Component {
         else { //did not successfully swipe
           Animated.spring(this.position, {
             toValue: { x: 0, y: 0 },
-            friction: 4
+            friction: 4,
+            useNativeDriver: true
           }).start()
         }
       }
