@@ -8,15 +8,17 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SwipeScreen from './components/swipe';
 import SignInScreen from './components/signin';
 import SignUpScreen from './components/signup';
+import ProfileSettings from './components/ProfileSettings';
 import GlobalState from './components/globalstate';
 import SignInContext from './components/context';
 
 //temp for compile
 function ProfileScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Profile Screen</Text>
-    </View>
+    // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    //   <Text>Profile Screen</Text>
+      <ProfileSettings/>
+    // </View>
   );
 }
 
