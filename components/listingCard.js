@@ -14,7 +14,7 @@ export default function ListingCard(props) {
     return (
       <ScrollView style={{height: scrollHeight}} onContentSizeChange={(w, h) => setScrollHeight(h)}>
           {props.pictures.map((picSource, index) =>
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback key={index}>
             <Image style={styles.listingImage} key={index} source={{uri: picSource}}/>
               </TouchableWithoutFeedback>
           )}

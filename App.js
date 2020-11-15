@@ -39,7 +39,7 @@ function MessageScreen({ navigation }) {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={MessageHomeScreen} />
         {matches.map((match, index) =>
-          <Drawer.Screen name={match} component={Messaging} />
+          <Drawer.Screen name={match} key={index} component={Messaging} />
         )}
       </Drawer.Navigator>
     </NavigationContainer>
