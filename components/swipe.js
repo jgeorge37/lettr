@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import { Text, View, Dimensions, Image, Animated, PanResponder } from 'react-native';
+import ProfileCard from '../components/profileCard'
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -12,36 +13,19 @@ class SwipeScreen extends Component {
     super()
 
     this.position = new Animated.ValueXY()
-    this.users = [ //TEMP USERS
-      {
-        id: 1,
-        name: "never",
-        age: "4",
-        picture: require('../testdata/user1.jpg')
-      },
-      {
-        id: 2,
-        name: "gonna",
-        age: "2",
-        picture: require('../testdata/user2.jpg')
-      },
-      {
-        id: 3,
-        name: "give",
-        age: "0",
-        picture: require('../testdata/user3.PNG')
-      },
-      {
-        id: 4,
-        name: "you",
-        age: "4",
-        picture: require('../testdata/user4.PNG')
-      },
-      {
-        id: 5,
-        name: "up",
-        age: "2",
-        picture: require('../testdata/room1.jpeg')
+    this.users = [
+      { about: {
+          pfp: 'https://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg',
+          fname: 'doge',
+          gender: 'male',
+          seeking: 'housing',
+          age: '420',
+          bio: 'doge'
+        },
+        content: {
+          pet_friendly: 'required',
+          budget: '$420-$420'
+        }
       }
     ]
     this.state = {
@@ -136,9 +120,7 @@ class SwipeScreen extends Component {
           <Text style={{ borderWidth: 1, borderColor: 'red', color: 'red', fontSize: 32, fontWeight: '800', padding: 10 }}>NAH</Text>
         </Animated.View>
 
-        <Image
-          style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
-          source={item.picture} />
+        <ProfileCard content={item.content} about={item.about} />
 
       </Animated.View>
     )
@@ -162,9 +144,7 @@ class SwipeScreen extends Component {
 
         </Animated.View>
 
-        <Image
-          style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
-          source={item.picture} />
+        <ProfileCard content={item.content} about={item.about} />
 
       </Animated.View>
     )
