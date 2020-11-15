@@ -1,6 +1,6 @@
 import React, {useState } from 'react';
 import { StyleSheet, View, SectionList, Switch, Modal, Image, TextInput, TouchableHighlight, Alter, Text } from 'react-native';
-import UserPreferenceForm from '../components/UserPreferenceForm';
+// import UserPreferenceForm from '../components/UserPreferenceForm';
 
 export default function ProfileSettings () {
     const [listingsIsEnabled, setListingsIsEnabled] = useState(false);
