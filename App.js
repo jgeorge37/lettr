@@ -29,6 +29,7 @@ function MessageHomeScreen({ navigation }) {
   return (
     <View style={{flex:1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Message a match!</Text>
+      <Text>Click the top left corner to see your matches.</Text>
     </View>
   )
 }
