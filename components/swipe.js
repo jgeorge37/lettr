@@ -17,31 +17,31 @@ class SwipeScreen extends Component {
         id: 1,
         name: "never",
         age: "4",
-        picture: require('./testdata/user1.jpg')
+        picture: require('../testdata/user1.jpg')
       },
       {
         id: 2,
         name: "gonna",
         age: "2",
-        picture: require('./testdata/user2.jpg')
+        picture: require('../testdata/user2.jpg')
       },
       {
         id: 3,
         name: "give",
         age: "0",
-        picture: require('./testdata/user3.PNG')
+        picture: require('../testdata/user3.PNG')
       },
       {
         id: 4,
         name: "you",
         age: "4",
-        picture: require('./testdata/user4.PNG')
+        picture: require('../testdata/user4.PNG')
       },
       {
         id: 5,
         name: "up",
         age: "2",
-        picture: require('./testdata/room1.jpeg')
+        picture: require('../testdata/room1.jpeg')
       }
     ]
     this.state = {
