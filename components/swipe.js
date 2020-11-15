@@ -172,13 +172,7 @@ class SwipeScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <View style={{ height: 60 }} />
-        <View style={{ flex: 1 }}>
-          {this.renderUsers()}
-        </View>
-        <View style={{ height: 60 }} />
-      </View>
+        this.renderUsers()
     );
   }
 }

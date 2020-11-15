@@ -1,16 +1,24 @@
-import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, ScrollView, Image, TouchableWithoutFeedback } from 'react-native';
 import Card from '../components/card';
 
+
+
 export default function ListingCard(props) {
+
+  const [scrollHeight, setScrollHeight] = useState(200)
 
   console.log(props.pictures)
 
   const organizePictures = () => {
     return (
-      <View style={styles.images}>
-        {props.pictures.map((picSource, index) => <Image style={styles.listingImage} key={index} source={{uri: picSource}}/>)}
-      </View>
+      <ScrollView style={{height: scrollHeight}} onContentSizeChange={(w, h) => setScrollHeight(h)}>
+          {props.pictures.map((picSource, index) =>
+            <TouchableWithoutFeedback>
+            <Image style={styles.listingImage} key={index} source={{uri: picSource}}/>
+              </TouchableWithoutFeedback>
+          )}
+      </ScrollView>
     )
   }
 
@@ -24,12 +32,11 @@ export default function ListingCard(props) {
 
 const styles = StyleSheet.create({
   images: {
-    overflowY: 'auto',
     flex:1,
     marginBottom: 5
   },
   listingImage: {
-    width: 200,
-    height: 200
+    width: 300,
+    height: 300
   }
 });
